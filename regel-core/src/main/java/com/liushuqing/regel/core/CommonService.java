@@ -1,4 +1,4 @@
-package com.liushuqing.easy.core;
+package com.liushuqing.regel.core;
 
 /**
  * Created by liushuqing on 2017/8/11.

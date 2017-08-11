@@ -1,4 +1,4 @@
-package com.liushuqing.easy.web.controller;
+package com.liushuqing.regel.web.controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
