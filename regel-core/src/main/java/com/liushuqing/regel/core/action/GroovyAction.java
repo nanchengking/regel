@@ -35,8 +35,9 @@ public class GroovyAction extends AbstractAction {
      */
     public GroovyAction(File file) throws IOException {
         super();
-        if (file != null && file.exists())
+        if (file != null && file.exists()) {
             this.groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(file);
+        }
     }
 
     /**
@@ -46,8 +47,13 @@ public class GroovyAction extends AbstractAction {
      */
     public GroovyAction(String script) {
         super();
-        if (script != null && script.trim().length() != 0)
-            this.groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(script);
+        try {
+            this.script = script;
+            this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void run(Context context) throws UnitRunException {
@@ -55,7 +61,7 @@ public class GroovyAction extends AbstractAction {
             if (this.groovyClass == null) {
                 this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
             }
-            GroovyManager.getInstance().invokeMethod(this.groovyClass, "run", context);
+            GroovyManager.getInstance().invokeMethod(this.groovyClass, "start", context);
         } catch (IOException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new UnitRunException(e);
         }

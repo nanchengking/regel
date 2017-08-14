@@ -17,4 +17,8 @@ interface Constants {
 
     public static final String JSON_FIELDNAME_CONDITION_FALSEUNIT = "false_unit"; // condition 为 false 时的执行单元
 
+    public static final String ACTION="action";
+
+    public static final String CONDITION="condition";
+
 }

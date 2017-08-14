@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Created by liushuqing on 2017/8/11.
  */
-public class GrovvyCondition extends AbstractCondition {
+public class GroovyCondition extends AbstractCondition {
 
     private Class groovyClass = null;
 
@@ -25,7 +25,7 @@ public class GrovvyCondition extends AbstractCondition {
     /**
      * Groovy 条件类
      */
-    public GrovvyCondition() {
+    public GroovyCondition() {
         super();
     }
 
@@ -35,7 +35,7 @@ public class GrovvyCondition extends AbstractCondition {
      * @param file Groovy 脚本文件
      * @throws IOException
      */
-    public GrovvyCondition(File file) throws IOException {
+    public GroovyCondition(File file) throws IOException {
         super();
         if (file != null && file.exists())
             this.groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(file);
@@ -46,10 +46,14 @@ public class GrovvyCondition extends AbstractCondition {
      *
      * @param script Groovy 脚本
      */
-    public GrovvyCondition(String script) {
+    public GroovyCondition(String script) {
         super();
-        if (script != null && script.trim().length() != 0)
-            this.groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(script);
+        this.script = script;
+        try {
+            this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void run(Context context) throws UnitRunException {
@@ -57,8 +61,7 @@ public class GrovvyCondition extends AbstractCondition {
             if (this.groovyClass == null) {
                 this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
             }
-
-            this.result = (Boolean) GroovyManager.getInstance().invokeMethod(this.groovyClass, "run", context);
+            this.result = (Boolean) GroovyManager.getInstance().invokeMethod(this.groovyClass, "start", context);
         } catch (IOException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new UnitRunException(e);
         }

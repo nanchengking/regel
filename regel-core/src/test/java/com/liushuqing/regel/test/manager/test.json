@@ -1,0 +1,9 @@
+{
+  "type": "condition",
+  "class": "com.liushuqing.regel.test.condition.ConditionTest.class",
+  "trueUnit": {
+    "class": "com.liushuqing.regel.test.action.ActionTest.class"
+  },
+  "falseUnit": {
+  }
+}

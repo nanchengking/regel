@@ -11,6 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by liushuqing on 2017/8/14.
  */
 public class GroovyClassUtil {
+    /**
+     * 简单缓存类对象
+     */
     private static final Map<String, Class> CLASS_MAP = new ConcurrentHashMap<>();
 
     /**
@@ -30,17 +33,18 @@ public class GroovyClassUtil {
         if (StringUtils.isNotEmpty(script)) {
             groovyClass = CLASS_MAP.get(script);
         }
-        if(groovyClass!=null){
+        if (groovyClass != null) {
             return groovyClass;
         }
         if (StringUtils.isNotEmpty(path)) {
             File file = new File(path);
-            if (file.exists())
+            if (file.exists()) {
                 groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(file);
-            CLASS_MAP.put(path,groovyClass);
+            }
+            CLASS_MAP.put(path, groovyClass);
         } else if (StringUtils.isNotEmpty(script)) {
             groovyClass = GroovyManager.getInstance().getGroovyClassLoader().parseClass(script);
-            CLASS_MAP.put(path,groovyClass);
+            CLASS_MAP.put(script, groovyClass);
         }
         return groovyClass;
     }
