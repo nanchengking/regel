@@ -20,10 +20,10 @@ public class GroovyManager {
         return sharedInstance;
     }
 
-    private GroovyClassLoader _classLoader;
+    private GroovyClassLoader classLoader;
 
     private GroovyManager() {
-        this._classLoader = new GroovyClassLoader();
+        this.classLoader = new GroovyClassLoader();
     }
 
     /**
@@ -31,7 +31,7 @@ public class GroovyManager {
      * @return Groovy 类加载器实例
      * */
     public GroovyClassLoader getGroovyClassLoader() {
-        return this._classLoader;
+        return this.classLoader;
     }
 
     /**
