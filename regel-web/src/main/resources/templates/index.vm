@@ -19,7 +19,9 @@
 </table>
 
 <div>
+    script name
     <input type="text" name="name" id="name"/>
+    groovy代码
     <textarea type="text" name="script" id="script"></textarea>
     <button id="putScript">提交</button>
 </div>
