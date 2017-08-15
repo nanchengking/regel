@@ -64,7 +64,7 @@
             script: $("#script").val()
         };
         $.ajax({
-            url: "/regel/putScript",
+            url: "/putScript",
             type: "POST",
             data: JSON.stringify(data1),
             contentType: "application/json; charset=utf-8",
@@ -78,7 +78,7 @@
 
     $("#getOneButton").click(function () {
         $.ajax({
-            url: "/regel/getScript?name=" + $("#getOne").val(),
+            url: "/getScript?name=" + $("#getOne").val(),
             type: "GET",
             success: function (data, status) {
                 alert("数据: \n" + data + "\n状态: " + status);
@@ -97,7 +97,7 @@
             falseAction: $("#falseAction").val(),
         };
         $.ajax({
-            url: "/regel/doAction",
+            url: "/doAction",
             type: "POST",
             data: JSON.stringify(doAction),
             contentType: "application/json; charset=utf-8",
