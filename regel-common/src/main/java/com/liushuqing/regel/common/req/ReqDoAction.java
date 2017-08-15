@@ -11,9 +11,19 @@ public class ReqDoAction implements Serializable {
     private String condition;
     private String trueAction;
     private String falseAction;
+    private String switchAction;
     private int age;
     private String name;
     private String will;
+
+
+    public String getSwitchAction() {
+        return switchAction;
+    }
+
+    public void setSwitchAction(String switchAction) {
+        this.switchAction = switchAction;
+    }
 
     public String getWill() {
         return will;

@@ -49,6 +49,8 @@
     <input type="text" name="trueAction" id="trueAction"/>
     falseAction
     <input type="text" name="falseAction" id="falseAction"/>
+    switchAction
+    <input type="text" name="switchAction" id="switchAction"/>
 
     <button id="doAction">执行命令</button>
 
@@ -95,6 +97,7 @@
             condition: $("#condition").val(),
             trueAction: $("#trueAction").val(),
             falseAction: $("#falseAction").val(),
+            switchAction: $("#switchAction").val(),
         };
         $.ajax({
             url: "/doAction",

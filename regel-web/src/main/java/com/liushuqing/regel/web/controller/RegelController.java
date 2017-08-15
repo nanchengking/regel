@@ -30,7 +30,6 @@ public class RegelController {
 
     @RequestMapping(value = "putScript")
     @ResponseBody
-
     public boolean putScript(@RequestBody ReqPutScript putScript) {
         if (putScript == null) {
             return false;
@@ -59,9 +58,14 @@ public class RegelController {
         Condition condition = new GroovyCondition(scriptLoader.get(reqDoAction.getCondition()));
         GroovyAction trueAction = new GroovyAction(scriptLoader.get(reqDoAction.getTrueAction()));
         GroovyAction falseAction = new GroovyAction(scriptLoader.get(reqDoAction.getFalseAction()));
+        GroovyAction switchAction = new GroovyAction(scriptLoader.get(reqDoAction.getSwitchAction()));
 
         condition.registerTrueUnit(trueAction);
         condition.registerFalseUnit(falseAction);
+
+        //不管结果如何，都要有个遍历年龄的过程
+        trueAction.registerUnit(switchAction);
+        falseAction.registerUnit(switchAction);
 
         Context<String> context = new SimpleContext();
         context.put("age", reqDoAction.getAge());
