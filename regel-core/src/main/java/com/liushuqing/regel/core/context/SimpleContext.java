@@ -6,9 +6,11 @@ import java.util.Map;
 /**
  * Created by liushuqing on 2017/8/11.
  */
-public class SimpleContext implements Context {
+public class SimpleContext<T> implements Context<T> {
 
     private Map<String, Object> map;
+
+    private T result;
 
     public SimpleContext() {
         this.map = new HashMap<String, Object>();
@@ -20,5 +22,16 @@ public class SimpleContext implements Context {
 
     public Object get(String key) {
         return this.map.get(key);
+    }
+
+    @Override
+    public boolean setResult(T result) {
+        this.result = result;
+        return true;
+    }
+
+    @Override
+    public T getResult() {
+        return this.result;
     }
 }

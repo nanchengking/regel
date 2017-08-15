@@ -1,4 +1,10 @@
-<H1>hello world</H1>
+<head>
+    <title>脚本测试</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>插入测试脚本</h2>
 <table>
     <tr>
         <td>name</td>
@@ -11,3 +17,99 @@
         </tr>
     #end
 </table>
+
+<div>
+    <input type="text" name="name" id="name"/>
+    <textarea type="text" name="script" id="script"></textarea>
+    <button id="putScript">提交</button>
+</div>
+
+
+<div>
+    <input id="getOne"></input>
+    <button id="getOneButton">读取一个</button>
+    <p>
+    <pre style="font-size: large;color: dodgerblue" id="scriptContent"></pre>
+    </p>
+</div>
+
+<h2>执行测试脚本</h2>
+
+<div>
+
+    用户名
+    <input type="text" name="userName" id="userName"/>
+    想干嘛
+    <input type="text" name="will" id="will"/>
+    年龄
+    <input type="text" name="age" id="age"/>
+    condition
+    <input type="text" name="condition" id="condition"/>
+    trueAction
+    <input type="text" name="trueAction" id="trueAction"/>
+    falseAction
+    <input type="text" name="falseAction" id="falseAction"/>
+
+    <button id="doAction">执行命令</button>
+
+    <p style="font-size: large;color: red" id="actionResult"></p>
+
+</div>
+
+
+<script>
+    $("#putScript").click(function () {
+        var data1 = {
+            name: $("#name").val(),
+            script: $("#script").val()
+        };
+        $.ajax({
+            url: "/regel/putScript",
+            type: "POST",
+            data: JSON.stringify(data1),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, status) {
+                alert("数据: \n" + data + "\n状态: " + status);
+            }
+        })
+    });
+
+
+    $("#getOneButton").click(function () {
+        $.ajax({
+            url: "/regel/getScript?name=" + $("#getOne").val(),
+            type: "GET",
+            success: function (data, status) {
+                alert("数据: \n" + data + "\n状态: " + status);
+                $("#scriptContent").text(data);
+            }
+        })
+    });
+
+    $("#doAction").click(function () {
+        var doAction = {
+            age: $("#age").val(),
+            will: $("#will").val(),
+            name: $("#userName").val(),
+            condition: $("#condition").val(),
+            trueAction: $("#trueAction").val(),
+            falseAction: $("#falseAction").val(),
+        };
+        $.ajax({
+            url: "/regel/doAction",
+            type: "POST",
+            data: JSON.stringify(doAction),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, status) {
+                alert("数据: \n" + data + "\n状态: " + status);
+                $("#actionResult").text(data);
+            }
+        })
+    });
+
+
+</script>
+
+</body>

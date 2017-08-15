@@ -10,7 +10,8 @@ class After18ActionScript implements ActionScript {
     void run(Context context) {
         String name = (String) context.get("name");
         String will = (String) context.get("will");
-        System.out.println("老司机开车进行中");
-        System.out.println(name + " is old enough to " + will);
+        String res = "老司机开车进行中" + name + " is old enough to " + will;
+        println(res)
+        context.setResult(res);
     }
 }

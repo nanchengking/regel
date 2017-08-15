@@ -10,8 +10,12 @@ public class ReqPutScript implements Serializable{
     String name;
     String script;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getScript() {

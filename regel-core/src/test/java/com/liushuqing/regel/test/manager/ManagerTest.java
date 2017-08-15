@@ -11,7 +11,7 @@ import org.junit.Test;
 /**
  * Created by liushuqing on 2017/8/14.
  */
-public class ManagerActionScript {
+public class ManagerTest {
 
 
     @Test
