@@ -15,6 +15,6 @@ public class ConditionTest extends AbstractCondition {
 
     @Override
     public void run(Context context) throws UnitRunException {
-        context.put("test", "hello");
+        context.put("ConditionScript", "hello");
     }
 }

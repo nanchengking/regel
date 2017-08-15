@@ -1,10 +1,10 @@
 package com.liushuqing.regel.core.condition;
 
+import com.liushuqing.regel.core.Constants;
 import com.liushuqing.regel.core.context.Context;
 import com.liushuqing.regel.core.exception.UnitRunException;
 import com.liushuqing.regel.core.manager.GroovyClassUtil;
 import com.liushuqing.regel.core.manager.GroovyManager;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class GroovyCondition extends AbstractCondition {
             if (this.groovyClass == null) {
                 this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
             }
-            this.result = (Boolean) GroovyManager.getInstance().invokeMethod(this.groovyClass, "start", context);
+            this.result = (Boolean) GroovyManager.getInstance().invokeMethod(this.groovyClass, Constants.RUN, context);
         } catch (IOException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new UnitRunException(e);
         }

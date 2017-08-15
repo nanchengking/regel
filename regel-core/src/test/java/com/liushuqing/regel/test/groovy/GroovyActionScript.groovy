@@ -6,7 +6,7 @@ import org.junit.Test
 /**
  * Created by liushuqing on 2017/8/14.
  */
-class GroovyTest {
+class GroovyActionScript {
     def name;
     def ids;
 
@@ -20,6 +20,6 @@ class GroovyTest {
     }
 
     public static void main(String[] args) {
-        new GroovyTest().hello()
+        new GroovyActionScript().hello()
     }
 }

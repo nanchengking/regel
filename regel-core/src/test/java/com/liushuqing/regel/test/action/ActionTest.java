@@ -13,6 +13,6 @@ public class ActionTest extends AbstractAction {
 
     @Override
     public void run(Context context) throws UnitRunException {
-        assertEquals(context.get("test"), "hello");
+        assertEquals(context.get("ConditionScript"), "hello");
     }
 }

@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 /**
  * Created by liushuqing on 2017/8/11.
  */
-public class RuleEngineTest {
+public class RuleEngineActionScript {
 
     @Test
     public void testRun() {
@@ -39,8 +39,8 @@ public class RuleEngineTest {
     public void testRunGroovy() throws IOException {
         String conditionScript = "import com.liushuqing.regel.core.context.Context\n" +
                 "class TestCondition {\n" +
-                "    boolean start(Context contex) {\n" +
-                "\t\tcontex.put(\"test\", \"hello\")\n" +
+                "    boolean run(Context contex) {\n" +
+                "\t\tcontex.put(\"ConditionScript\", \"hello\")\n" +
                 "\t\tprintln(\" conditionScript\")\n" +
                 "\t\treturn true\n" +
                 "\t}\n" +
@@ -48,9 +48,9 @@ public class RuleEngineTest {
         String actionScript = "import com.liushuqing.regel.core.context.Context\n" +
                 "import static org.junit.Assert.*;\n" +
                 "class TestAction {\n" +
-                "    void start(Context context) {\n" +
+                "    void run(Context context) {\n" +
                 "\t\tprintln(\" actionScript\")\n" +
-                "\t\tassertEquals(context.get(\"test\"), \"hello\")\n" +
+                "\t\tassertEquals(context.get(\"ConditionScript\"), \"hello\")\n" +
                 "\t}\n" +
                 "}";
         Condition condition = new GroovyCondition(conditionScript);

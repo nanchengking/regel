@@ -1,5 +1,6 @@
 package com.liushuqing.regel.core.action;
 
+import com.liushuqing.regel.core.Constants;
 import com.liushuqing.regel.core.context.Context;
 import com.liushuqing.regel.core.exception.UnitRunException;
 import com.liushuqing.regel.core.manager.GroovyClassUtil;
@@ -61,7 +62,7 @@ public class GroovyAction extends AbstractAction {
             if (this.groovyClass == null) {
                 this.groovyClass = GroovyClassUtil.loadClass(this.script, this.path);
             }
-            GroovyManager.getInstance().invokeMethod(this.groovyClass, "start", context);
+            GroovyManager.getInstance().invokeMethod(this.groovyClass, Constants.RUN, context);
         } catch (IOException | InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             throw new UnitRunException(e);
         }
