@@ -75,7 +75,7 @@ public class ManagerActionScript {
         condition.registerFalseUnit(falseAction);
 
         Context context = new SimpleContext();
-        context.put("age", 18);
+        context.put("age", 16);
         context.put("name", "leo");
         context.put("will", "在1024群发黄图");
         RuleEngine.getInstance().setEntry(condition).start(context);
