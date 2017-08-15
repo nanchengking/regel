@@ -22,7 +22,7 @@ import javax.annotation.Resource;
  * Created by liushuqing on 2017/8/15.
  */
 @Controller
-@RequestMapping("/regel")
+@RequestMapping("/")
 public class RegelController {
 
     @Resource
@@ -39,10 +39,10 @@ public class RegelController {
         return true;
     }
 
-    @RequestMapping("index")
+    @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("scripts", scriptLoader.getAll());
-        return "test";
+        return "index";
     }
 
     @RequestMapping("getScript")

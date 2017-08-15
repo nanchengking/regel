@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @EnableAutoConfiguration
-@RequestMapping("/")
+@RequestMapping("common")
 public class CommonController {
 
     @RequestMapping("/")

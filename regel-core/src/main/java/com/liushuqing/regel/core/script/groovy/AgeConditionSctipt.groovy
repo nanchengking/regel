@@ -1,4 +1,4 @@
-package com.liushuqing.regel.core.script
+package com.liushuqing.regel.core.script.groovy
 
 import com.liushuqing.regel.core.context.Context
 
